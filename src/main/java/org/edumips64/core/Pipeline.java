@@ -21,29 +21,29 @@ public class Pipeline {
     clear();
   }
 
-  boolean isEmptyOrBubble(Stage stage) {
+  public boolean isEmptyOrBubble(Stage stage) {
     return isEmpty(stage) || isBubble(stage);
   }
 
-  boolean isEmpty(Stage stage) {
+  public boolean isEmpty(Stage stage) {
     return stageInstructionMap.get(stage) == null;
   }
 
-  boolean isBubble(Stage stage) {
+  public boolean isBubble(Stage stage) {
     return !isEmpty(stage) && stageInstructionMap.get(stage).getName().equals(" ");
   }
 
-  int size() {
+  public int size() {
     return (int) stageInstructionMap.entrySet().stream()
         .filter(e -> e.getValue() != null)
         .count();
   }
 
-  Map<Stage, InstructionInterface> getInternalRepresentation() {
+  public Map<Stage, InstructionInterface> getInternalRepresentation() {
     return stageInstructionMap;
   }
 
-  InstructionInterface get(Stage stage) {
+  public InstructionInterface get(Stage stage) {
     return stageInstructionMap.get(stage);
   }
 
@@ -52,47 +52,47 @@ public class Pipeline {
    * Like Map.put(), setters return the previous mapping if any, or null if
    * no mapping was in place.
    */
-  InstructionInterface IF() {
+  public InstructionInterface IF() {
     return get(Stage.IF);
   }
 
-  InstructionInterface ID() {
+  public InstructionInterface ID() {
     return get(Stage.ID);
   }
 
-  InstructionInterface EX() {
+  public InstructionInterface EX() {
     return get(Stage.EX);
   }
 
-  InstructionInterface MEM() {
+  public InstructionInterface MEM() {
     return get(Stage.MEM);
   }
 
-  InstructionInterface WB() {
+  public InstructionInterface WB() {
     return get(Stage.WB);
   }
 
-  InstructionInterface setIF(InstructionInterface instruction) {
+  public InstructionInterface setIF(InstructionInterface instruction) {
     return stageInstructionMap.put(Stage.IF, instruction);
   }
 
-  InstructionInterface setID(InstructionInterface instruction) {
+  public InstructionInterface setID(InstructionInterface instruction) {
     return stageInstructionMap.put(Stage.ID, instruction);
   }
 
-  InstructionInterface setEX(InstructionInterface instruction) {
+  public InstructionInterface setEX(InstructionInterface instruction) {
     return stageInstructionMap.put(Stage.EX, instruction);
   }
 
-  InstructionInterface setMEM(InstructionInterface instruction) {
+  public InstructionInterface setMEM(InstructionInterface instruction) {
     return stageInstructionMap.put(Stage.MEM, instruction);
   }
 
-  InstructionInterface setWB(InstructionInterface instruction) {
+  public InstructionInterface setWB(InstructionInterface instruction) {
     return stageInstructionMap.put(Stage.WB, instruction);
   }
 
-  void clear() {
+  public void clear() {
     stageInstructionMap.put(Stage.IF, null);
     stageInstructionMap.put(Stage.ID, null);
     stageInstructionMap.put(Stage.EX, null);
